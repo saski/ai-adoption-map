@@ -3,11 +3,7 @@
 import { readFileSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
 
-const DEFAULT_CSV = resolve(
-  process.cwd(),
-  "ai-adoption-map-eventbrite-supply",
-  "kpi-tracker.csv",
-);
+const DEFAULT_CSV = resolve(process.cwd(), "kpi-tracker.csv");
 
 function parseCsvLine(line) {
   const cells = [];

@@ -52,7 +52,7 @@ It also supports rolling up DORA outcomes for a pilot scope:
 3. Roll weekly rows up into sprint-level inputs for `kpi-tracker.csv`.
 4. Update one new row in `kpi-tracker.csv`.
 5. Run:
-   - `node ai-adoption-map-eventbrite-supply/scripts/update-kpi-derived-fields.mjs`
+   - From the repo root: `node scripts/update-kpi-derived-fields.mjs`
 6. Recompute derived fields automatically:
    - `adoption_ratio_active_pct`
    - `defect_escape_rate_pct`

@@ -2,6 +2,10 @@
 
 This folder contains a practical AI adoption map inspired by Gorka's value stream map format and adapted to Eventbrite Supply team workflows.
 
+**GitHub**: publish as **`saski/ai-adoption-map`** on the [saski](https://github.com/saski?tab=repositories) profile (private recommended). Clone from `~/saski/*` using:
+
+`git clone git@github.com-saski:saski/ai-adoption-map.git`
+
 ## Goals
 
 - Visualize where AI is already used in the software delivery lifecycle.

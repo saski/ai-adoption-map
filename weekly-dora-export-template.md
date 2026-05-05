@@ -134,4 +134,4 @@ At sprint end:
    - `sprint_length_days`
 5. Run:
 
-`node ai-adoption-map-eventbrite-supply/scripts/update-kpi-derived-fields.mjs`
+`node scripts/update-kpi-derived-fields.mjs` (run from the repository root)

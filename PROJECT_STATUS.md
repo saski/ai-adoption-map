@@ -1,7 +1,9 @@
-# AI Adoption Map for Eventbrite Supply - Project Status
+# AI Adoption Map (Eventbrite Supply) — Project Status
 
 **Last Updated**: 2026-05-05
 **Overall Status**: 🟢 **97% Complete** - Manager demo now includes Evals + DORA impact diagram
+
+**Repository**: [github.com/saski/ai-adoption-map](https://github.com/saski/ai-adoption-map) (create private repo on the `saski` account if it does not exist yet; local folder is `~/saski/ai-adoption-map`).
 
 ---
 
@@ -104,6 +106,11 @@
 - ✅ Linked demo entrypoint from `README.md`.
 - ✅ Extended the same HTML with an **Evals + DORA** visual: measurement cadence (lock → weekly → sprint → eval → narrative), four DORA tiles, P0–P3 phase ladder, and cohort attribution note.
 - ✅ Each value-stream task is **expandable** (`<details>`): shows **proposed goal** and **proposed tool** (MCP, Cursor skill, workflow, or label), with search covering those fields.
+
+### Repository naming (2026-05-05)
+
+- ✅ Local folder renamed to `ai-adoption-map` (was `ai-adoption-map-eventbrite-supply`); target GitHub repo name **`saski/ai-adoption-map`** for [saski repositories](https://github.com/saski?tab=repositories).
+- ✅ KPI script default CSV path runs from repo root (`kpi-tracker.csv`); guides updated for `node scripts/...`.
 
 ---
 
