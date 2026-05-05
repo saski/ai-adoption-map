@@ -1,0 +1,4 @@
+week_start_date,week_end_date,pilot_scope_id,service_or_domain,prod_deployments_count,failed_prod_deployments_count,cfr_pct,mttr_median_hours,lead_time_median_hours,notes
+2026-05-12,2026-05-18,Supply-AI-DORA-Pilot-2026-Q2-Example,inventory-api,6,1,,2.5,18.0,One Sev-1 incident attributed to deploy-inventory-api-prod
+2026-05-12,2026-05-18,Supply-AI-DORA-Pilot-2026-Q2-Example,catalog-read-service,4,0,,,14.0,No deploy-attributed incidents this week
+2026-05-12,2026-05-18,Supply-AI-DORA-Pilot-2026-Q2-Example,pricing-engine,5,1,,1.2,20.5,One rollback required after pricing rules regression

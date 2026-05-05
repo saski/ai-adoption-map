@@ -1,0 +1,2 @@
+experiment_id,start_date,end_date,hypothesis,intervention,scope,primary_metrics,result_summary,decision,owner,links
+EXP-000,<YYYY-MM-DD>,<YYYY-MM-DD>,<what you believe will change>,<what you changed>,<repos/services>,<comma-separated metric names>,<short outcome>,<continue|tweak|stop>,<name>,<urls or doc paths>

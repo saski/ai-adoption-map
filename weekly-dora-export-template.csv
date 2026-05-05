@@ -1,0 +1,2 @@
+week_start_date,week_end_date,pilot_scope_id,service_or_domain,prod_deployments_count,failed_prod_deployments_count,cfr_pct,mttr_median_hours,lead_time_median_hours,notes
+<YYYY-MM-DD>,<YYYY-MM-DD>,<pilot-id>,<service-or-domain>,<n>,<n>,,,,<optional context>

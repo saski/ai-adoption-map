@@ -1,0 +1,1208 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Eventbrite Supply — AI Adoption Map (Manager Briefing)</title>
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #0b1220;
+        --panel: #121a2a;
+        --border: rgba(255, 255, 255, 0.08);
+        --text: rgba(255, 255, 255, 0.92);
+        --muted: rgba(255, 255, 255, 0.68);
+        --faint: rgba(255, 255, 255, 0.52);
+        --active: #22c55e;
+        --possible: #facc15;
+        --na: #94a3b8;
+        --accent: #60a5fa;
+      }
+
+      body {
+        margin: 0;
+        font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+          "Apple Color Emoji", "Segoe UI Emoji";
+        background: radial-gradient(1200px 800px at 20% 0%, rgba(96, 165, 250, 0.18), transparent 55%),
+          radial-gradient(900px 600px at 90% 10%, rgba(34, 197, 94, 0.12), transparent 55%), var(--bg);
+        color: var(--text);
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      header {
+        padding: 28px 22px 10px;
+        max-width: 1240px;
+        margin: 0 auto;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        font-size: 22px;
+        letter-spacing: 0.2px;
+      }
+
+      .sub {
+        margin: 0;
+        color: var(--muted);
+        max-width: 980px;
+        line-height: 1.45;
+      }
+
+      .toolbar {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 14px 22px 18px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+      }
+
+      button.filter {
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text);
+        padding: 8px 10px;
+        border-radius: 999px;
+        cursor: pointer;
+        font-size: 13px;
+      }
+
+      button.filter[aria-pressed="true"] {
+        border-color: rgba(96, 165, 250, 0.55);
+        box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.12);
+      }
+
+      .search {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+      }
+
+      input[type="search"] {
+        width: min(420px, 70vw);
+        border-radius: 10px;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.04);
+        color: var(--text);
+        padding: 9px 10px;
+        outline: none;
+      }
+
+      .kpiRow {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 22px 10px;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 12px;
+      }
+
+      @media (max-width: 980px) {
+        .kpiRow {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .ctaRow {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 22px 14px;
+      }
+
+      .panel {
+        border: 1px solid var(--border);
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+        border-radius: 14px;
+        padding: 14px 14px 12px;
+      }
+
+      .panel h2 {
+        margin: 0 0 8px;
+        font-size: 14px;
+        letter-spacing: 0.6px;
+        text-transform: uppercase;
+        color: var(--faint);
+        font-weight: 650;
+      }
+
+      .intent ul {
+        margin: 8px 0 0;
+        padding-left: 18px;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .meter {
+        display: grid;
+        gap: 8px;
+      }
+
+      .meterTop {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .bar {
+        height: 10px;
+        border-radius: 999px;
+        overflow: hidden;
+        display: flex;
+        border: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .seg {
+        height: 100%;
+      }
+
+      .legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px 14px;
+        margin-top: 8px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .dot {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        margin-right: 8px;
+        vertical-align: middle;
+      }
+
+      .board {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 8px 22px 34px;
+        display: grid;
+        grid-template-columns: repeat(5, minmax(220px, 1fr));
+        gap: 12px;
+        align-items: start;
+      }
+
+      @media (max-width: 1180px) {
+        .board {
+          grid-template-columns: repeat(2, minmax(240px, 1fr));
+        }
+      }
+
+      @media (max-width: 640px) {
+        .board {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .column {
+        border: 1px solid var(--border);
+        background: rgba(18, 26, 42, 0.72);
+        border-radius: 14px;
+        overflow: hidden;
+        min-height: 120px;
+      }
+
+      .colHead {
+        padding: 12px 12px 10px;
+        border-bottom: 1px solid var(--border);
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .colTitle {
+        font-size: 13px;
+        font-weight: 750;
+        letter-spacing: 0.2px;
+      }
+
+      .colHint {
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .colBody {
+        padding: 10px;
+        display: grid;
+        gap: 8px;
+      }
+
+      details.card {
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.03);
+        position: relative;
+      }
+
+      details.card[data-status="active"] {
+        border-color: rgba(34, 197, 94, 0.35);
+      }
+
+      details.card[data-status="possible"] {
+        border-color: rgba(250, 204, 21, 0.35);
+      }
+
+      details.card[data-status="na"] {
+        border-color: rgba(148, 163, 184, 0.28);
+      }
+
+      details.card > summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 10px 10px 9px;
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 8px;
+      }
+
+      details.card > summary::-webkit-details-marker {
+        display: none;
+      }
+
+      details.card .summaryBody {
+        flex: 1 1 auto;
+        min-width: 0;
+      }
+
+      details.card .chev {
+        flex: 0 0 auto;
+        width: 22px;
+        text-align: center;
+        color: var(--faint);
+        font-size: 12px;
+        line-height: 1.2;
+        margin-top: 2px;
+        transition: transform 0.15s ease;
+      }
+
+      details.card[open] .chev {
+        transform: rotate(90deg);
+      }
+
+      .pillRow {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: flex-start;
+      }
+
+      .id {
+        color: var(--faint);
+        font-size: 12px;
+        font-weight: 650;
+        white-space: nowrap;
+      }
+
+      .statusDot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        margin-top: 2px;
+        flex: 0 0 auto;
+      }
+
+      details.card[data-status="active"] .statusDot {
+        background: var(--active);
+      }
+
+      details.card[data-status="possible"] .statusDot {
+        background: var(--possible);
+      }
+
+      details.card[data-status="na"] .statusDot {
+        background: var(--na);
+      }
+
+      .taskTitle {
+        margin-top: 6px;
+        font-size: 13px;
+        line-height: 1.25;
+        font-weight: 650;
+      }
+
+      .taskNotes {
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.35;
+      }
+
+      .expandHint {
+        margin-top: 6px;
+        font-size: 11px;
+        color: var(--faint);
+      }
+
+      details.card[open] .expandHint {
+        display: none;
+      }
+
+      .cardDetail {
+        padding: 0 10px 10px;
+        border-top: 1px solid var(--border);
+      }
+
+      .detailBlock {
+        margin-top: 10px;
+      }
+
+      .detailBlock h3 {
+        margin: 0 0 4px;
+        font-size: 11px;
+        letter-spacing: 0.45px;
+        text-transform: uppercase;
+        color: var(--accent);
+        font-weight: 750;
+      }
+
+      .detailBlock p {
+        margin: 0;
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.45;
+      }
+
+      .toolbarHint {
+        width: 100%;
+        flex-basis: 100%;
+        order: 3;
+        font-size: 12px;
+        color: var(--faint);
+        padding: 0 2px 2px;
+      }
+
+      footer {
+        max-width: 1240px;
+        margin: 0 auto;
+        padding: 0 22px 30px;
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      footer a {
+        color: var(--accent);
+      }
+
+      .doraPanel {
+        border-color: rgba(34, 197, 94, 0.22);
+      }
+
+      .doraLead {
+        margin: 0 0 12px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
+      .flowStrip {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+        gap: 8px;
+        margin-bottom: 14px;
+      }
+
+      .flowNode {
+        flex: 1 1 140px;
+        min-width: 120px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 10px 10px 9px;
+        background: rgba(255, 255, 255, 0.03);
+      }
+
+      .flowNode strong {
+        display: block;
+        font-size: 12px;
+        letter-spacing: 0.35px;
+        text-transform: uppercase;
+        color: var(--faint);
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+
+      .flowNode span {
+        font-size: 12px;
+        color: var(--muted);
+        line-height: 1.35;
+      }
+
+      .flowArrow {
+        flex: 0 0 auto;
+        align-self: center;
+        color: var(--faint);
+        font-size: 18px;
+        padding: 0 2px;
+        user-select: none;
+      }
+
+      .doraGrid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+
+      @media (max-width: 900px) {
+        .doraGrid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 480px) {
+        .doraGrid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .doraTile {
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 10px 10px 9px;
+        background: rgba(96, 165, 250, 0.06);
+      }
+
+      .doraTile .abbr {
+        font-size: 15px;
+        font-weight: 800;
+        letter-spacing: 0.4px;
+        color: var(--text);
+      }
+
+      .doraTile .name {
+        margin-top: 2px;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        color: var(--faint);
+        font-weight: 650;
+      }
+
+      .doraTile .def {
+        margin-top: 6px;
+        font-size: 11px;
+        color: var(--muted);
+        line-height: 1.35;
+      }
+
+      .phaseStrip {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      @media (max-width: 900px) {
+        .phaseStrip {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 480px) {
+        .phaseStrip {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .phaseTile {
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 10px 10px 9px;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .phaseTile .tag {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.6px;
+        color: var(--accent);
+        margin-bottom: 4px;
+      }
+
+      .phaseTile p {
+        margin: 0;
+        font-size: 11px;
+        color: var(--muted);
+        line-height: 1.35;
+      }
+
+      .cohortNote {
+        margin: 0 0 12px;
+        padding: 10px 12px;
+        border-radius: 12px;
+        border: 1px dashed rgba(250, 204, 21, 0.35);
+        background: rgba(250, 204, 21, 0.06);
+        color: var(--muted);
+        font-size: 12px;
+        line-height: 1.4;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Eventbrite Supply — AI Adoption Map (Manager Briefing)</h1>
+      <p class="sub">
+        Two views in one briefing: (1) the five-stage adoption board for where AI helps next, and (2) a measurement chain
+        for evals + DORA—definitions, weekly capture, sprint rollup, experiments, and phased learning—so impact is
+        explained with the same screen share.
+      </p>
+    </header>
+
+    <div class="toolbar" role="region" aria-label="Controls">
+      <div class="filters" aria-label="Filters">
+        <button class="filter" type="button" data-filter="all" aria-pressed="true">All</button>
+        <button class="filter" type="button" data-filter="active" aria-pressed="false">AI Active</button>
+        <button class="filter" type="button" data-filter="possible" aria-pressed="false">AI Possible</button>
+        <button class="filter" type="button" data-filter="na" aria-pressed="false">N/A</button>
+      </div>
+      <div class="search">
+        <label class="sr-only" for="q">Search tasks</label>
+        <input id="q" type="search" placeholder="Search tasks (example: PR, Jira, tests)…" autocomplete="off" />
+      </div>
+      <p class="toolbarHint">
+        Click any task to expand proposed goal and concrete tool (MCP, Cursor skill, agent workflow, or label)—same idea
+        as the 540° VSM demo: steps stay compact until you need depth.
+      </p>
+    </div>
+
+    <div class="kpiRow">
+      <section class="panel intent" aria-label="Intention">
+        <h2>Intention (what we are trying to do)</h2>
+        <ul>
+          <li><strong>Align</strong> teams on a single end-to-end workflow (value stream), not a scattered list of AI tools.</li>
+          <li><strong>Make tradeoffs explicit</strong>: speed vs review burden vs incident risk vs doc drift.</li>
+          <li><strong>Turn “AI adoption” into measurable delivery learning</strong> by pairing the map with DORA definitions and a tiny KPI cadence.</li>
+          <li><strong>Keep it lightweight</strong>: labels + weekly export + sprint rollup—no platform project required to start.</li>
+        </ul>
+      </section>
+
+      <section class="panel" aria-label="Adoption mix">
+        <h2>Adoption mix (baseline)</h2>
+        <div class="meter" id="meter"></div>
+        <div class="legend" aria-label="Legend">
+          <span><span class="dot" style="background: var(--active)"></span>AI Active</span>
+          <span><span class="dot" style="background: var(--possible)"></span>AI Possible</span>
+          <span><span class="dot" style="background: var(--na)"></span>N/A</span>
+        </div>
+        <p class="sub" style="margin: 10px 0 0; font-size: 12px">
+          Outcomes: the diagram below shows how weekly DORA capture rolls into sprint KPIs and sprint-sized evals—same
+          page as the adoption board so managers see workflow + measurement together.
+        </p>
+      </section>
+    </div>
+
+    <div class="ctaRow">
+      <section class="panel doraPanel" aria-labelledby="dora-impact-title">
+        <h2 id="dora-impact-title">Evals + DORA — progress and impact</h2>
+        <p class="doraLead">
+          The value stream map shows <em>where</em> AI fits; this strip shows <em>how</em> we learn whether changes help
+          or hurt delivery. Definitions stay in <code>dora-definitions.md</code>; numbers flow weekly → sprint →
+          experiments with explicit stop rules.
+        </p>
+
+        <p class="cohortNote">
+          <strong style="color: var(--text)">Attribution.</strong> DORA is service-level outcomes. AI impact is read by
+          cohorts and trends (for example PR labels such as <code>ai-assisted</code> vs control, or before/after a
+          bounded experiment)—not by relabeling deploy frequency as an “AI score.”
+        </p>
+
+        <div class="flowStrip" aria-label="Measurement cadence from definitions to review">
+          <div class="flowNode">
+            <strong>1 · Lock</strong>
+            <span>Pilot scope, deploy unit, CFR severity threshold, PR label policy (<code>dora-definitions.md</code>).</span>
+          </div>
+          <span class="flowArrow" aria-hidden="true">→</span>
+          <div class="flowNode">
+            <strong>2 · Weekly</strong>
+            <span>Per-service export: DF, LT, CFR, MTTR + cheap leading signals into <code>weekly-dora-export-template.csv</code>.</span>
+          </div>
+          <span class="flowArrow" aria-hidden="true">→</span>
+          <div class="flowNode">
+            <strong>3 · Sprint rollup</strong>
+            <span>Medians / rates merged into <code>kpi-tracker.csv</code>; adoption map update in the same retro cadence.</span>
+          </div>
+          <span class="flowArrow" aria-hidden="true">→</span>
+          <div class="flowNode">
+            <strong>4 · Eval + decide</strong>
+            <span><code>experiment-log.csv</code>: hypothesis, guardrails, stop if CFR or flake rate breaches.</span>
+          </div>
+          <span class="flowArrow" aria-hidden="true">→</span>
+          <div class="flowNode">
+            <strong>5 · Narrative</strong>
+            <span>Quarterly story: what moved, confounders, what we standardize vs stop (plan phases P0–P3).</span>
+          </div>
+        </div>
+
+        <div class="doraGrid" aria-label="Four DORA metrics tracked for impact">
+          <div class="doraTile">
+            <div class="abbr">DF</div>
+            <div class="name">Deployment frequency</div>
+            <p class="def">Successful production deploys per window for the in-scope service or domain.</p>
+          </div>
+          <div class="doraTile">
+            <div class="abbr">LT</div>
+            <div class="name">Lead time for changes</div>
+            <p class="def">Median time from first commit on the integration path to production deploy.</p>
+          </div>
+          <div class="doraTile">
+            <div class="abbr">CFR</div>
+            <div class="name">Change failure rate</div>
+            <p class="def">Failed prod deploys ÷ prod deploys, using agreed severity and rollback rules.</p>
+          </div>
+          <div class="doraTile">
+            <div class="abbr">MTTR</div>
+            <div class="name">Mean time to restore</div>
+            <p class="def">Median detect → restored for incidents attributed to an in-scope production deploy.</p>
+          </div>
+        </div>
+
+        <div class="phaseStrip" aria-label="Evaluation phases">
+          <div class="phaseTile">
+            <div class="tag">P0</div>
+            <p><strong style="color: var(--text)">Instrumentation</strong> — labels, pilot repos, baseline window, dashboards trustworthy.</p>
+          </div>
+          <div class="phaseTile">
+            <div class="tag">P1</div>
+            <p><strong style="color: var(--text)">Observe</strong> — weekly cohort trends; document confounders; no causal claim.</p>
+          </div>
+          <div class="phaseTile">
+            <div class="tag">P2</div>
+            <p><strong style="color: var(--text)">Experiment</strong> — sprint-sized change, hypothesis on 1–2 metrics, hard stop rules.</p>
+          </div>
+          <div class="phaseTile">
+            <div class="tag">P3</div>
+            <p><strong style="color: var(--text)">Scale</strong> — bake in standards; automate weekly digest; reduce measurement tax.</p>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <main class="board" id="board" aria-label="Value stream board"></main>
+
+    <footer>
+      This demo is static HTML for screen-sharing. Canonical artifacts live in
+      <a href="../README.md">the project folder README</a>. For DORA intent, see
+      <a href="../ai-evals-dora-kpi-plan.md">ai-evals-dora-kpi-plan.md</a> and
+      <a href="../dora-definitions.md">dora-definitions.md</a>.
+    </footer>
+
+    <script>
+      const stages = [
+        {
+          key: "define",
+          title: "Stage 1 — Define",
+          hint: "Formalize the problem before solving it.",
+        },
+        {
+          key: "plan",
+          title: "Stage 2 — Plan",
+          hint: "Prepare implementation before touching production paths.",
+        },
+        {
+          key: "implement",
+          title: "Stage 3 — Implement",
+          hint: "Delegate, review, iterate—keep slices small.",
+        },
+        {
+          key: "integrate",
+          title: "Stage 4 — Integrate",
+          hint: "Quality gates with humans in the loop.",
+        },
+        {
+          key: "operate",
+          title: "Stage 5 — Operate",
+          hint: "Learn from production reality; feed improvements back into rules and prompts.",
+        },
+      ];
+
+      const tasks = [
+        {
+          id: 1,
+          stage: "define",
+          title: "Capture organizer or internal business need",
+          status: "active",
+          notes: "Summarize signals from tickets, incidents, and interviews.",
+          proposedGoal: "Turn noisy intake into a single credible problem statement before engineering commits capacity.",
+          proposedTool:
+            "Glean enterprise-search MCP (docs + past incidents) plus Cursor chat to cluster Jira/Slack excerpts; EM edits the final narrative.",
+        },
+        {
+          id: 2,
+          stage: "define",
+          title: "Write problem statement and user story",
+          status: "active",
+          notes: "Co-draft alternatives; tighten boundaries early.",
+          proposedGoal: "Align PM, EM, and design on one crisp story with explicit non-goals to cut rework downstream.",
+          proposedTool:
+            "Cursor agent drafting from template + `collaborative-design` skill prompts; human locks wording in the ticket or PRD.",
+        },
+        {
+          id: 3,
+          stage: "define",
+          title: "Define acceptance criteria",
+          status: "possible",
+          notes: "Generate edge cases and non-happy paths; humans approve.",
+          proposedGoal: "Surface edge cases and failure modes before build so QA and reviewers share the same bar.",
+          proposedTool:
+            "IDE assistant on acceptance-criteria checklist + `xp-predict-problems` style prompts; PM signs off and applies `ai-assisted` on the spec PR if used.",
+        },
+        {
+          id: 4,
+          stage: "define",
+          title: "Assess design and technical constraints",
+          status: "possible",
+          notes: "Risk prompts: dependencies, security, data integrity.",
+          proposedGoal: "Expose security, data, and dependency landmines while the change is still cheap to reshape.",
+          proposedTool:
+            "Glean codebase-context / similar-code MCP plus `xp-security-analysis` skill checklist; TL validates against service boundaries in `pilot-scope-template.md`.",
+        },
+        {
+          id: 5,
+          stage: "define",
+          title: "Estimate complexity and delivery risk",
+          status: "possible",
+          notes: "Heuristics + validation; avoid false precision.",
+          proposedGoal: "Give leadership honest ranges with explicit unknowns instead of single-point guesses.",
+          proposedTool:
+            "Historic Jira/Glean throughput snippets + AI-suggested risk drivers; EM owns the final estimate and documents assumptions in the epic.",
+        },
+        {
+          id: 6,
+          stage: "define",
+          title: "Prioritize and move to sprint",
+          status: "na",
+          notes: "Leadership decision; AI should not replace accountability.",
+          proposedGoal: "Keep prioritization an explicit human decision with a clear audit trail for tradeoffs.",
+          proposedTool:
+            "No autonomous tool: EM/PM decision only. Optional AI nudges as comments on roadmap docs—never auto-staffing or auto-prioritization.",
+        },
+
+        {
+          id: 7,
+          stage: "plan",
+          title: "Create branch and implementation draft",
+          status: "active",
+          notes: "Outline impacted components/services early.",
+          proposedGoal: "Start implementation with a branch that already names scope, owners, and rollback posture.",
+          proposedTool:
+            "Git + Cursor (`@` files for impacted services); optional `github-host-alias` skill when cloning cross-org deps; branch naming from team convention doc.",
+        },
+        {
+          id: 8,
+          stage: "plan",
+          title: "Create technical plan",
+          status: "active",
+          notes: "Dependencies, migrations, rollback notes.",
+          proposedGoal: "Produce a one-page plan that links migrations, deploy order, and rollback before code lands.",
+          proposedTool:
+            "`fic-create-plan` skill for phased outline + `documentation-lookup` MCP (Context7) for library edges; TL merges plan into repo docs or ticket.",
+        },
+        {
+          id: 9,
+          stage: "plan",
+          title: "Split into small tasks",
+          status: "active",
+          notes: "Vertical slices; thin PRs; reduce blast radius.",
+          proposedGoal: "Keep every PR reviewable in under a day with clear vertical slices and fewer merge conflicts.",
+          proposedTool:
+            "Cursor multi-file edit with `story-splitting` skill heuristics; tasks exported to Jira with human sizing on each slice.",
+        },
+        {
+          id: 10,
+          stage: "plan",
+          title: "Detect dependencies and risks",
+          status: "active",
+          notes: "Integration/security scans as prompts, not autopilot.",
+          proposedGoal: "Catch cross-service and flaky-integration risks while planning still has slack to absorb them.",
+          proposedTool:
+            "Glean similar-code MCP + Datadog MCP (error hotspots on candidate dependencies); output is a checklist the TL signs before build.",
+        },
+        {
+          id: 11,
+          stage: "plan",
+          title: "Prepare test strategy",
+          status: "possible",
+          notes: "Propose unit/integration/e2e focus; align with risk.",
+          proposedGoal: "Match test depth to risk so CI time and coverage both make sense for the change.",
+          proposedTool:
+            "`tdd` skill to draft a risk-based pyramid + Jest/pytest scaffolds; QE or TL approves strategy in PR description with `ai-test-generated` when tests are AI-drafted.",
+        },
+
+        {
+          id: 12,
+          stage: "implement",
+          title: "Implement first slice with AI pairing",
+          status: "active",
+          notes: "Smallest end-to-end increment first.",
+          proposedGoal: "Land the thinnest vertical slice that proves integration paths before scaling the change surface.",
+          proposedTool:
+            "Cursor Agent with repo `AGENTS.md` / rules loaded; for UI, Marmalade-aware edits using local Cursor rules pack; pair human reviews each chunk.",
+        },
+        {
+          id: 13,
+          stage: "implement",
+          title: "Iterate and refine generated code",
+          status: "active",
+          notes: "Naming, simplicity, typing discipline.",
+          proposedGoal: "Keep generated code readable and typed so the next human does not pay a readability tax.",
+          proposedTool:
+            "`code-simplifier` skill passes + TypeScript strict fixes in Cursor; optional `xp-simple-design-refactor` prompts when functions exceed team size guardrails.",
+        },
+        {
+          id: 14,
+          stage: "implement",
+          title: "Generate and run tests",
+          status: "active",
+          notes: "Tests-first drafting; close obvious gaps.",
+          proposedGoal: "Raise confidence without bloating flaky suites—especially around money, auth, and listings edges.",
+          proposedTool:
+            "Jest/pytest generation from spec snippets in Cursor; label `ai-test-generated` on PRs; CI runs same as human-written tests; stop if flaky rate spikes per `experiment-log.csv` guardrails.",
+        },
+        {
+          id: 15,
+          stage: "implement",
+          title: "Commit with semantic message",
+          status: "active",
+          notes: "Make changes auditable across teams.",
+          proposedGoal: "Make history grep-friendly for incident forensics and DORA lead-time forensics.",
+          proposedTool:
+            "Conventional-commit assist in Cursor + commit template hook; human edits message; DORA linkage uses deploy metadata, not the AI phrasing itself.",
+        },
+        {
+          id: 16,
+          stage: "implement",
+          title: "Verify quality and coverage",
+          status: "possible",
+          notes: "Weak-test detection; watch for vanity coverage.",
+          proposedGoal: "Detect shallow tests before they create false confidence in staging and prod.",
+          proposedTool:
+            "`mutation-testing` skill pilot on high-risk modules + CI coverage diff; human interprets results—never auto-merge on green mutants alone.",
+        },
+        {
+          id: 17,
+          stage: "implement",
+          title: "Resolve integration conflicts",
+          status: "active",
+          notes: "Compatibility checks; keep CI green.",
+          proposedGoal: "Resolve merge conflicts quickly without breaking behavioral contracts across services.",
+          proposedTool:
+            "Cursor merge UI with AI explanation of both sides of a conflict; rerun targeted integration tests; no auto-resolve on generated lockfiles without human glance.",
+        },
+
+        {
+          id: 18,
+          stage: "integrate",
+          title: "Open pull request",
+          status: "active",
+          notes: "Title/body/test plan/rollout notes template.",
+          proposedGoal: "Give reviewers a test plan, rollout notes, and risk callouts before the first line of review.",
+          proposedTool:
+            "GitHub PR template + Cursor-generated body from diff; apply `ai-assisted` label when any AI drafting was used; link Jira epic for traceability.",
+        },
+        {
+          id: 19,
+          stage: "integrate",
+          title: "Auto-review the PR",
+          status: "active",
+          notes: "Find regressions and missing tests early.",
+          proposedGoal: "Catch missing tests, risky patterns, and rollout gaps before expensive human review cycles.",
+          proposedTool:
+            "GitHub Actions (lint, typecheck, security scanners) + Cursor Bugbot or org code-review bot; tag `ai-review-used` when an AI review step produced findings the author acted on.",
+        },
+        {
+          id: 20,
+          stage: "integrate",
+          title: "Address reviewer feedback",
+          status: "active",
+          notes: "Summarize threads; targeted fixes.",
+          proposedGoal: "Shorten review loops by turning long comment threads into actionable patches with traceability.",
+          proposedTool:
+            "Cursor chat over PR diff with AI summary of threads; author applies patches locally; still requires human reviewer re-approval per branch protection.",
+        },
+        {
+          id: 21,
+          stage: "integrate",
+          title: "Update Jira and release notes",
+          status: "possible",
+          notes: "Draft updates; owner confirms wording.",
+          proposedGoal: "Keep customer-facing release notes and internal trackers aligned with what actually shipped.",
+          proposedTool:
+            "AI draft from merged PR titles + linked tickets; PM edits in Jira; optional Glean `meeting-context` MCP snippets for stakeholder phrasing—human publishes.",
+        },
+        {
+          id: 22,
+          stage: "integrate",
+          title: "Human functional review",
+          status: "na",
+          notes: "Product confidence gate stays human-owned.",
+          proposedGoal: "Preserve explicit human accountability for product behavior and UX acceptance.",
+          proposedTool:
+            "Human QA checklist only. AI may prep repro steps or session notes, but sign-off stays human—no MCP or agent replaces this gate.",
+        },
+        {
+          id: 23,
+          stage: "integrate",
+          title: "Merge and deploy to staging",
+          status: "active",
+          notes: "Checklists + rollback prompts.",
+          proposedGoal: "Promote to staging with smoke coverage and a documented rollback lever every time.",
+          proposedTool:
+            "CI deploy pipeline + AI-generated release checklist from diff (feature flags, migrations, metrics to watch); Datadog saved view linked in deploy ticket.",
+        },
+
+        {
+          id: 24,
+          stage: "operate",
+          title: "Monitor production behavior",
+          status: "active",
+          notes: "Triage signals from logs/alerts/traces.",
+          proposedGoal: "Detect regressions and saturation issues early with dashboards tuned to Supply SLOs.",
+          proposedTool:
+            "Datadog MCP (metrics, logs, traces, monitors) plus on-call runbook deep-links; AI summarizes anomaly windows into a short triage note—human owns paging response.",
+        },
+        {
+          id: 25,
+          stage: "operate",
+          title: "Diagnose and reproduce bugs",
+          status: "active",
+          notes: "Hypotheses and repro scenarios; shorten MTTR.",
+          proposedGoal: "Cut MTTR with tight repro bundles and ranked hypotheses tied to deploy identifiers.",
+          proposedTool:
+            "`diagnose` skill loop (reproduce → minimize → instrument) + Datadog/Sentry evidence pasted into incident doc; linkage to deploy ID per `dora-definitions.md`.",
+        },
+        {
+          id: 26,
+          stage: "operate",
+          title: "Handle internal support requests",
+          status: "possible",
+          notes: "Suggest paths from known incidents and docs.",
+          proposedGoal: "Deflect repeat internal questions by surfacing the best prior incident or doc path quickly.",
+          proposedTool:
+            "Glean search MCP + `wiki-query` skill over the Obsidian or internal wiki runbooks; answer is always cited; human support engineer edits before sending.",
+        },
+        {
+          id: 27,
+          stage: "operate",
+          title: "Update technical documentation",
+          status: "active",
+          notes: "Runbooks/changelogs; reduce operational toil.",
+          proposedGoal: "Keep runbooks and service READMEs honest relative to prod behavior after each meaningful change.",
+          proposedTool:
+            "Cursor diff-aware Markdown edits against repo docs; PR labeled `ai-docs-updated` when AI drafted sections; owner merges after verifying commands still work.",
+        },
+        {
+          id: 28,
+          stage: "operate",
+          title: "Run team retrospective",
+          status: "possible",
+          notes: "Summarize themes and actions from notes.",
+          proposedGoal: "Turn retro notes into a small number of owned actions with clear metrics for the next sprint.",
+          proposedTool:
+            "`user-feedback-synthesizer` skill on exported Slack/retro board text; facilitator still runs the live retro—AI only clusters themes between sessions.",
+        },
+        {
+          id: 29,
+          stage: "operate",
+          title: "Improve team AI rules and prompts",
+          status: "active",
+          notes: "Institutionalize what worked; remove noisy guidance.",
+          proposedGoal: "Shrink bad agent behavior by encoding what worked as small, reviewable rule changes.",
+          proposedTool:
+            "PRs to `.cursor/rules`, `AGENTS.md`, or shared skills via `create-rule` / `write-a-skill` skills; changes reviewed like code; linked to retro action items.",
+        },
+        {
+          id: 30,
+          stage: "operate",
+          title: "Evaluate new AI capabilities quarterly",
+          status: "possible",
+          notes: "Small controlled experiments before broad rollout.",
+          proposedGoal: "Pick what to standardize using evidence, not vendor demos—tie to DORA and eval guardrails.",
+          proposedTool:
+            "`experiment-log.csv` plus `trustworthy-experiments` / `ab-test-designer` skill framing; read impact off `weekly-dora-export-template.csv` rollups in `kpi-tracker.csv` with EM sign-off.",
+        },
+      ];
+
+      const board = document.getElementById("board");
+      const meter = document.getElementById("meter");
+      const q = document.getElementById("q");
+
+      let activeFilter = "all";
+
+      function counts() {
+        const total = tasks.length;
+        const active = tasks.filter((t) => t.status === "active").length;
+        const possible = tasks.filter((t) => t.status === "possible").length;
+        const na = tasks.filter((t) => t.status === "na").length;
+        return { total, active, possible, na };
+      }
+
+      function renderMeter() {
+        const { total, active, possible, na } = counts();
+        const activePct = (active / total) * 100;
+        const possiblePct = (possible / total) * 100;
+        const naPct = (na / total) * 100;
+
+        meter.innerHTML = `
+          <div class="meterTop">
+            <div><strong>${active}</strong> active · <strong>${possible}</strong> possible · <strong>${na}</strong> n/a</div>
+            <div>${total} tasks</div>
+          </div>
+          <div class="bar" aria-label="Adoption distribution">
+            <span class="seg" style="width:${activePct}%; background: var(--active)"></span>
+            <span class="seg" style="width:${possiblePct}%; background: var(--possible)"></span>
+            <span class="seg" style="width:${naPct}%; background: var(--na)"></span>
+          </div>
+          <div class="meterTop" style="margin-top: 6px">
+            <div>Active ${activePct.toFixed(0)}%</div>
+            <div>Possible ${possiblePct.toFixed(0)}%</div>
+            <div>N/A ${naPct.toFixed(0)}%</div>
+          </div>
+        `;
+      }
+
+      function matchesFilter(task) {
+        if (activeFilter === "all") return true;
+        return task.status === activeFilter;
+      }
+
+      function matchesQuery(task) {
+        const query = q.value.trim().toLowerCase();
+        if (!query) return true;
+        const hay = `${task.id} ${task.title} ${task.notes} ${task.proposedGoal} ${task.proposedTool}`.toLowerCase();
+        return hay.includes(query);
+      }
+
+      function renderBoard() {
+        board.innerHTML = "";
+
+        for (const stage of stages) {
+          const col = document.createElement("section");
+          col.className = "column";
+          col.dataset.stage = stage.key;
+
+          const head = document.createElement("div");
+          head.className = "colHead";
+          head.innerHTML = `<div class="colTitle">${stage.title}</div><div class="colHint">${stage.hint}</div>`;
+
+          const body = document.createElement("div");
+          body.className = "colBody";
+
+          const stageTasks = tasks.filter((t) => t.stage === stage.key).filter(matchesFilter).filter(matchesQuery);
+
+          for (const task of stageTasks) {
+            const card = document.createElement("details");
+            card.className = "card";
+            card.dataset.status = task.status;
+
+            const summary = document.createElement("summary");
+            const summaryBody = document.createElement("div");
+            summaryBody.className = "summaryBody";
+            const pillRow = document.createElement("div");
+            pillRow.className = "pillRow";
+            const idEl = document.createElement("div");
+            idEl.className = "id";
+            idEl.textContent = `#${String(task.id).padStart(2, "0")}`;
+            const dot = document.createElement("div");
+            dot.className = "statusDot";
+            dot.setAttribute("aria-label", `Status ${task.status}`);
+            pillRow.appendChild(idEl);
+            pillRow.appendChild(dot);
+            const titleEl = document.createElement("div");
+            titleEl.className = "taskTitle";
+            titleEl.textContent = task.title;
+            const notesEl = document.createElement("div");
+            notesEl.className = "taskNotes";
+            notesEl.textContent = task.notes;
+            const hintEl = document.createElement("div");
+            hintEl.className = "expandHint";
+            hintEl.textContent = "Show proposed goal + tool";
+            summaryBody.appendChild(pillRow);
+            summaryBody.appendChild(titleEl);
+            summaryBody.appendChild(notesEl);
+            summaryBody.appendChild(hintEl);
+            const chev = document.createElement("span");
+            chev.className = "chev";
+            chev.setAttribute("aria-hidden", "true");
+            chev.textContent = "▸";
+            summary.appendChild(summaryBody);
+            summary.appendChild(chev);
+
+            const detail = document.createElement("div");
+            detail.className = "cardDetail";
+            const goalBlock = document.createElement("div");
+            goalBlock.className = "detailBlock";
+            const goalH = document.createElement("h3");
+            goalH.textContent = "Proposed goal";
+            const goalP = document.createElement("p");
+            goalP.textContent = task.proposedGoal;
+            goalBlock.appendChild(goalH);
+            goalBlock.appendChild(goalP);
+            const toolBlock = document.createElement("div");
+            toolBlock.className = "detailBlock";
+            const toolH = document.createElement("h3");
+            toolH.textContent = "Proposed tool or materialization";
+            const toolP = document.createElement("p");
+            toolP.textContent = task.proposedTool;
+            toolBlock.appendChild(toolH);
+            toolBlock.appendChild(toolP);
+            detail.appendChild(goalBlock);
+            detail.appendChild(toolBlock);
+
+            card.appendChild(summary);
+            card.appendChild(detail);
+            body.appendChild(card);
+          }
+
+          col.appendChild(head);
+          col.appendChild(body);
+          board.appendChild(col);
+        }
+      }
+
+      function setFilter(next) {
+        activeFilter = next;
+        for (const btn of document.querySelectorAll("button.filter")) {
+          btn.setAttribute("aria-pressed", String(btn.dataset.filter === next));
+        }
+        renderBoard();
+      }
+
+      for (const btn of document.querySelectorAll("button.filter")) {
+        btn.addEventListener("click", () => setFilter(btn.dataset.filter));
+      }
+
+      q.addEventListener("input", () => {
+        renderBoard();
+      });
+
+      renderMeter();
+      renderBoard();
+    </script>
+  </body>
+</html>
