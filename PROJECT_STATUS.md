@@ -1,7 +1,7 @@
 # AI Adoption Map (Eventbrite Supply) — Project Status
 
 **Last Updated**: 2026-05-05
-**Overall Status**: 🟢 **97% Complete** - Manager demo now includes Evals + DORA impact diagram
+**Overall Status**: 🟢 **98% Complete** - README + manager demo include ordered team adoption path and cadence
 
 **Repository**: [github.com/saski/ai-adoption-map](https://github.com/saski/ai-adoption-map) (create private repo on the `saski` account if it does not exist yet; local folder is `~/saski/ai-adoption-map`).
 
@@ -106,6 +106,7 @@
 - ✅ Linked demo entrypoint from `README.md`.
 - ✅ Extended the same HTML with an **Evals + DORA** visual: measurement cadence (lock → weekly → sprint → eval → narrative), four DORA tiles, P0–P3 phase ladder, and cohort attribution note.
 - ✅ Each value-stream task is **expandable** (`<details>`): shows **proposed goal** and **proposed tool** (MCP, Cursor skill, workflow, or label), with search covering those fields.
+- ✅ **How teams adopt this**: README section with step order, example matrix, cadence table; matching playbook panel + footer link in `demo/manager-briefing.html`.
 
 ### Repository naming (2026-05-05)
 

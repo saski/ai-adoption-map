@@ -562,6 +562,50 @@
         font-size: 12px;
         line-height: 1.4;
       }
+
+      .adoptionPanel {
+        border-color: rgba(167, 139, 250, 0.38);
+      }
+
+      .adoptSteps {
+        margin: 0;
+        padding-left: 20px;
+        color: var(--muted);
+        line-height: 1.45;
+        font-size: 13px;
+      }
+
+      .adoptSteps li {
+        margin: 10px 0;
+      }
+
+      .adoptSteps strong {
+        color: var(--text);
+      }
+
+      .adoptSteps a {
+        color: var(--accent);
+      }
+
+      .adoptSteps code {
+        font-size: 11px;
+      }
+
+      .adoptCadence {
+        margin-top: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .cadencePill {
+        font-size: 11px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        border: 1px solid var(--border);
+        color: var(--muted);
+      }
     </style>
   </head>
   <body>
@@ -589,6 +633,65 @@
         Click any task to expand proposed goal and concrete tool (MCP, Cursor skill, agent workflow, or label)—same idea
         as the 540° VSM demo: steps stay compact until you need depth.
       </p>
+    </div>
+
+    <div class="ctaRow">
+      <section class="panel adoptionPanel" aria-labelledby="adopt-playbook-title">
+        <h2 id="adopt-playbook-title">How your team adopts this (in order)</h2>
+        <p class="doraLead" style="margin-bottom: 10px">
+          Same path as the repo README—use this panel during kickoff, then keep the <strong>cadence</strong> chips as a
+          rhythm reminder. Canonical tables and copy-paste examples:
+          <a href="../README.md#how-teams-adopt-this">README → How teams adopt this</a>.
+        </p>
+        <ol class="adoptSteps">
+          <li>
+            <strong>0 · Same day (~15 min)</strong> — Align on the 30 tasks / five stages in
+            <a href="../eventbrite-supply-ai-value-stream-map.md"><code>eventbrite-supply-ai-value-stream-map.md</code></a>.
+            Keep this HTML open for the walkthrough.
+          </li>
+          <li>
+            <strong>1 · Week 0 — Lock measurement</strong> — In order: copy
+            <a href="../pilot-scope-template.md"><code>pilot-scope-template.md</code></a> → your team file (use
+            <a href="../pilot-scope-example-filled.md"><code>pilot-scope-example-filled.md</code></a> for section shape
+            only), then freeze definitions with
+            <a href="../dora-definitions.md"><code>dora-definitions.md</code></a>.
+          </li>
+          <li>
+            <strong>2 · Sprint 0 — First alignment (~30 min)</strong> — Run
+            <a href="../alignment-meeting-agenda.md"><code>alignment-meeting-agenda.md</code></a> +
+            <a href="../facilitator-script.md"><code>facilitator-script.md</code></a>. Capture baseline using
+            <a href="../sprint-0-board-update.md"><code>sprint-0-board-update.md</code></a> as the example, then own
+            updates in the live map file.
+          </li>
+          <li>
+            <strong>3 · Every sprint</strong> — Use
+            <a href="../board-update-template.md"><code>board-update-template.md</code></a> and
+            <a href="../update-process.md"><code>update-process.md</code></a> so status changes stay consistent.
+          </li>
+          <li>
+            <strong>4 · Weekly + sprint close (outcomes)</strong> — Weekly row:
+            <a href="../weekly-dora-export-template.csv"><code>weekly-dora-export-template.csv</code></a> (how-to:
+            <a href="../weekly-dora-export-template.md"><code>weekly-dora-export-template.md</code></a>; pattern:
+            <a href="../weekly-dora-export-example-filled.csv"><code>weekly-dora-export-example-filled.csv</code></a>).
+            Roll into <a href="../kpi-tracker.csv"><code>kpi-tracker.csv</code></a> using
+            <a href="../sprint-kpi-rollup-example.md"><code>sprint-kpi-rollup-example.md</code></a>;
+            <a href="../kpi-tracker-guide.md"><code>kpi-tracker-guide.md</code></a> for columns. Optional:
+            <code>node scripts/update-kpi-derived-fields.mjs</code> from repo root. Log evals in
+            <a href="../experiment-log.csv"><code>experiment-log.csv</code></a>; keep design aligned with
+            <a href="../ai-evals-dora-kpi-plan.md"><code>ai-evals-dora-kpi-plan.md</code></a>.
+          </li>
+          <li>
+            <strong>5 · Quarterly</strong> — Narrative review of impact, confounders, what to scale vs stop; refresh
+            <a href="../PROJECT_STATUS.md"><code>PROJECT_STATUS.md</code></a> with the team.
+          </li>
+        </ol>
+        <div class="adoptCadence" aria-label="Cadence after onboarding">
+          <strong style="color: var(--text); font-size: 12px">Cadence:</strong>
+          <span class="cadencePill">Weekly map + DORA row ~15 min</span>
+          <span class="cadencePill">End of sprint update ~30 min</span>
+          <span class="cadencePill">Quarterly deep dive ~60 min</span>
+        </div>
+      </section>
     </div>
 
     <div class="kpiRow">
@@ -706,9 +809,9 @@
     <main class="board" id="board" aria-label="Value stream board"></main>
 
     <footer>
-      This demo is static HTML for screen-sharing. Canonical artifacts live in
-      <a href="../README.md">the project folder README</a>. For DORA intent, see
-      <a href="../ai-evals-dora-kpi-plan.md">ai-evals-dora-kpi-plan.md</a> and
+      This demo is static HTML for screen-sharing. Adoption order, cadence, and which examples to copy are in
+      <a href="../README.md#how-teams-adopt-this">README → How teams adopt this</a> and in the playbook panel above.
+      For DORA intent, see <a href="../ai-evals-dora-kpi-plan.md">ai-evals-dora-kpi-plan.md</a> and
       <a href="../dora-definitions.md">dora-definitions.md</a>.
     </footer>
 
