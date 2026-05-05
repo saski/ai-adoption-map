@@ -4,7 +4,7 @@ This document is the measurement contract for connecting AI-assisted delivery si
 
 ## Pilot Scope
 
-Fill in `pilot-scope-template.md` and treat it as authoritative for:
+Fill in `pilot-scope-template.md` (copy to `pilot-scope-<pilot-name>.md` — **one file per measurement pilot**, typically team-scoped with multiple repos listed inside) and treat it as authoritative for:
 
 - which services/repos are in-scope
 - what environment counts as “production”

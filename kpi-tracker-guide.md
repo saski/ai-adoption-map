@@ -21,7 +21,7 @@ It also supports rolling up DORA outcomes for a pilot scope:
 
 - `sprint_id`: Sprint label (example: `S1`, `S2`, `2026-W20`)
 - `date`: Snapshot date (`YYYY-MM-DD`)
-- `pilot_scope_id`: Identifier for the active pilot (see `pilot-scope-template.md`)
+- `pilot_scope_id`: Identifier for the active **pilot** (same idea as `pilot-scope-<pilot-name>.md`; usually one pilot per team per wave, not one ID per repo)
 - `pilot_service_or_domain`: Primary service/domain being measured for DORA rollups
 - `sprint_length_days`: Length of the sprint window (commonly `14`)
 - `total_tasks`: Usually `30` unless map changes

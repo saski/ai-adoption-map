@@ -27,7 +27,7 @@ Do these **in order**:
 
 | Step | What to do | Artifact |
 | ---- | ---------- | -------- |
-| 1a | Agree pilot services/repos, what counts as production, and PR label policy. | Copy `pilot-scope-template.md` → `pilot-scope-<your-team>.md` (use `pilot-scope-example-filled.md` **only for section layout**, not as real data). |
+| 1a | Agree pilot services/repos, what counts as production, and PR label policy. | Copy `pilot-scope-template.md` → `pilot-scope-<pilot-name>.md` — **one file per pilot** (usually one pilot per team per wave, with many repos in the table inside that file). Not one file per repo unless it is a single-repo pilot. See the note at the top of `pilot-scope-template.md`. (Use `pilot-scope-example-filled.md` **only for section layout**, not as real data.) |
 | 1b | Freeze DORA meaning for the pilot (deploy unit, CFR severity, MTTR attribution). | `dora-definitions.md` as the contract; adjust only with EM + TL + AI lead sign-off as described there. |
 
 ### 2) First alignment meeting (Sprint 0, ~30 minutes)
@@ -70,7 +70,7 @@ Do these **in order**:
 | You need… | Open this example first |
 | --------- | ------------------------ |
 | First baseline write-up | `sprint-0-board-update.md` |
-| Pilot scope layout | `pilot-scope-example-filled.md` (structure only) |
+| Pilot scope layout | `pilot-scope-example-filled.md` (structure only; `<pilot-name>` = measurement pilot, typically team-scoped) |
 | Weekly CSV shape | `weekly-dora-export-example-filled.csv` |
 | Sprint → tracker math | `sprint-kpi-rollup-example.md` |
 | Live screen share | `demo/manager-briefing.html` |

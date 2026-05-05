@@ -107,6 +107,7 @@
 - ✅ Extended the same HTML with an **Evals + DORA** visual: measurement cadence (lock → weekly → sprint → eval → narrative), four DORA tiles, P0–P3 phase ladder, and cohort attribution note.
 - ✅ Each value-stream task is **expandable** (`<details>`): shows **proposed goal** and **proposed tool** (MCP, Cursor skill, workflow, or label), with search covering those fields.
 - ✅ **How teams adopt this**: README section with step order, example matrix, cadence table; matching playbook panel + footer link in `demo/manager-briefing.html`.
+- ✅ Clarified `pilot-scope-<pilot-name>.md`: **one file per measurement pilot** (usually team-scoped, many repos in one table); not one file per repo unless single-repo pilot (`pilot-scope-template.md`, README, `dora-definitions.md`, `kpi-tracker-guide.md`, manager briefing).
 
 ### Repository naming (2026-05-05)
 

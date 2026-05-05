@@ -4,6 +4,14 @@ Copy this file to `pilot-scope-<pilot-name>.md` and fill it in before collecting
 
 See `pilot-scope-example-filled.md` for a fictional completed example.
 
+## One file per pilot (not per repo)
+
+`<pilot-name>` names a **bounded measurement pilot**: who is committing to which **services or domains**, for which **dates**, with one shared **label policy** and **CFR threshold**. That is usually **one pilot per team per wave** (the EM sponsor owns one file listing every in-scope service/repo for that team). It is **not** one markdown file per repository unless you deliberately run a single-repo pilot.
+
+Use **more than one** pilot-scope file when boundaries differ—for example two teams with different deploy identifiers, or the same team running two non-overlapping measurement windows you want to keep separate in `kpi-tracker.csv` (`pilot_scope_id`).
+
+Use **one** pilot-scope file with **many table rows** when several repos belong to the same pilot (shared weekly export and definitions).
+
 ## Pilot Metadata
 
 - Pilot name: `<example: Supply-AI-DORA-Pilot-2026-Q2>`
