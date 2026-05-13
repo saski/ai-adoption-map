@@ -1,4 +1,4 @@
-# Eventbrite Supply AI Adoption Board (Visual)
+# Product Engineering AI Adoption Board (Visual)
 
 Use this file as the visual companion to the value stream map.
 
@@ -91,5 +91,5 @@ flowchart LR
 
 1. Update status classes in this Mermaid board.
 2. Update the numeric KPIs in this file.
-3. Sync task notes in `eventbrite-supply-ai-value-stream-map.md`.
+3. Sync task notes in `ai-adoption-value-stream-map.md`.
 4. Record what changed in `PROJECT_STATUS.md`.

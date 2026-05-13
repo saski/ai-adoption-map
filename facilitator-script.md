@@ -4,7 +4,7 @@ Use this script verbatim or adapt as needed.
 
 ## Opening (0:00-0:03)
 
-"Today we are aligning on our Sprint 0 AI adoption baseline for Eventbrite Supply teams.  
+"Today we are aligning on our Sprint 0 AI adoption baseline for product engineering teams.
 The goal is simple: agree on baseline statuses and commit to 1-3 small, measurable experiments for next sprint.  
 This is a calibration session, not a team performance evaluation."
 

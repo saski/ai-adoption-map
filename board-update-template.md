@@ -41,5 +41,5 @@ Copy this block into the sprint retro notes and fill it in.
 ### 5) Actions
 
 - [ ] Update `visual-board-mermaid.md`
-- [ ] Update `eventbrite-supply-ai-value-stream-map.md`
+- [ ] Update `ai-adoption-value-stream-map.md`
 - [ ] Update `PROJECT_STATUS.md`

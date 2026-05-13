@@ -51,7 +51,7 @@
 ## 5) Actions
 
 - [x] Update `visual-board-mermaid.md`
-- [x] Update `eventbrite-supply-ai-value-stream-map.md`
+- [x] Update `ai-adoption-value-stream-map.md`
 - [x] Update `PROJECT_STATUS.md`
 
 ## Notes for the First Alignment Session

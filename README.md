@@ -1,6 +1,6 @@
-# AI Adoption Map for Eventbrite Supply Teams
+# AI Adoption Map for Product Engineering Teams
 
-This folder contains a practical AI adoption map inspired by 540's value stream map format and adapted to Eventbrite teams workflows.
+This folder contains a practical AI adoption map inspired by 540's value stream map format and adapted to product engineering team workflows.
 
 **GitHub**: publish as **`saski/ai-adoption-map`** on the [saski](https://github.com/saski?tab=repositories) profile (private recommended). Clone from `~/saski/*` using:
 
@@ -18,7 +18,7 @@ Follow these **steps in order** once per team or domain. You do not need every f
 
 ### 0) Before anything else (same day, ~15 minutes)
 
-1. Skim `eventbrite-supply-ai-value-stream-map.md` so everyone shares the same **30 tasks** and **five stages**.
+1. Skim `ai-adoption-value-stream-map.md` so everyone shares the same **30 tasks** and **five stages**.
 2. Open `demo/manager-briefing.html` for a **manager walkthrough** (board + DORA chain + expandable tasks). Same content is summarized below in [Manager briefing demo](#manager-briefing-demo-in-browser).
 
 ### 1) Lock how you will measure (Week 0, before Sprint 0)
@@ -38,7 +38,7 @@ Do these **in order**:
 | ---- | ---------- | -------- |
 | 2a | Run the meeting exactly on the clock. | `alignment-meeting-agenda.md` |
 | 2b | Facilitator follows prompts so decisions do not drift. | `facilitator-script.md` |
-| 2c | Capture the first agreed statuses and notes. | Start from `sprint-0-board-update.md` as a **filled example**, then maintain your truth in `eventbrite-supply-ai-value-stream-map.md` (or a team fork). |
+| 2c | Capture the first agreed statuses and notes. | Start from `sprint-0-board-update.md` as a **filled example**, then maintain your truth in `ai-adoption-value-stream-map.md` (or a team fork). |
 
 ### 3) Turn the meeting into a sprint habit
 
@@ -88,7 +88,7 @@ How to open:
 
 ## Contents
 
-- `eventbrite-supply-ai-value-stream-map.md`: staged value stream map with task-level AI opportunities.
+- `ai-adoption-value-stream-map.md`: staged value stream map with task-level AI opportunities.
 - `visual-board-mermaid.md`: visual board version (stage columns + color-coded status).
 - `update-process.md`: operating model to keep the map accurate over time.
 - `board-update-template.md`: sprint-ready template to run updates consistently.

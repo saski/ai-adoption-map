@@ -1,6 +1,6 @@
 # Update Process - AI Adoption Map
 
-This process keeps the map current and useful for Eventbrite Supply teams.
+This process keeps the map current and useful for product engineering teams.
 
 ## 1) Ownership
 
@@ -46,7 +46,7 @@ Update the map immediately when any of these happens:
 
 1. Export candidate changes from Jira, PR labels, and incident notes.
 2. Review each map task in 30 minutes with team leads.
-3. Update statuses and notes in `eventbrite-supply-ai-value-stream-map.md`.
+3. Update statuses and notes in `ai-adoption-value-stream-map.md`.
 4. Capture 1-3 experiments for next sprint from "AI Possible".
 5. Record outcomes in `PROJECT_STATUS.md`.
 

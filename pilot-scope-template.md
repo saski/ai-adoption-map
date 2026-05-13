@@ -1,4 +1,4 @@
-# Pilot Scope Template (Eventbrite Supply)
+# Pilot Scope Template (Product Engineering)
 
 Copy this file to `pilot-scope-<pilot-name>.md` and fill it in before collecting DORA exports.
 

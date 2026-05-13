@@ -4,7 +4,7 @@ Use this agenda with:
 
 - `sprint-0-board-update.md`
 - `visual-board-mermaid.md`
-- `eventbrite-supply-ai-value-stream-map.md`
+- `ai-adoption-value-stream-map.md`
 
 ## Meeting Goal
 
@@ -63,6 +63,6 @@ Align Supply team leads on baseline AI adoption status and commit to 1-3 high-va
 1. Confirmed baseline status decisions.
 2. Final list of next-sprint experiments with owners.
 3. Any required edits to:
-   - `eventbrite-supply-ai-value-stream-map.md`
+   - `ai-adoption-value-stream-map.md`
    - `visual-board-mermaid.md`
    - `sprint-0-board-update.md`

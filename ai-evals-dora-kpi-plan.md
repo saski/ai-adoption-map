@@ -1,4 +1,4 @@
-# Plan: AI Evals + DORA + Team Performance KPIs (Eventbrite Supply)
+# Plan: AI Evals + DORA + Team Performance KPIs (Product Engineering)
 
 ## Purpose
 

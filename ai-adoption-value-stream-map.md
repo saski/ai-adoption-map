@@ -1,6 +1,6 @@
-# Value Stream Map - Eventbrite Supply AI Adoption
+# Value Stream Map - Product Engineering AI Adoption
 
-Inspired by Gorka's map format, adapted for Eventbrite Supply product engineering teams.
+Inspired by Gorka's map format, adapted for product engineering teams.
 
 ## Legend
 

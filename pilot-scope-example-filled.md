@@ -1,4 +1,4 @@
-# Pilot Scope Example (Fictional) - Eventbrite Supply
+# Pilot Scope Example (Fictional) - Product Engineering
 
 This is a filled example for structure only. Replace all placeholders with real services, repos, and identifiers before use.
 
@@ -15,9 +15,9 @@ This is a filled example for structure only. Replace all placeholders with real 
 
 | Service or domain | Repo(s) | Production deploy identifier | Notes |
 | --- | --- | --- | --- |
-| `inventory-api` | `eventbrite/inventory-api` | `deploy-inventory-api-prod` pipeline success | Count only prod promotion step, not canary-only unless promoted |
-| `catalog-read-service` | `eventbrite/catalog-read-service` | Git tag `catalog-read@*` applied to prod release | Hotfix path must use same tagging scheme |
-| `pricing-engine` | `eventbrite/pricing-engine` | `deploy-pricing-engine-prod` pipeline success | Exclude scheduled config-only deploys if not code changes |
+| `inventory-api` | `example-org/inventory-api` | `deploy-inventory-api-prod` pipeline success | Count only prod promotion step, not canary-only unless promoted |
+| `catalog-read-service` | `example-org/catalog-read-service` | Git tag `catalog-read@*` applied to prod release | Hotfix path must use same tagging scheme |
+| `pricing-engine` | `example-org/pricing-engine` | `deploy-pricing-engine-prod` pipeline success | Exclude scheduled config-only deploys if not code changes |
 
 ## Out of Scope (explicit)
 

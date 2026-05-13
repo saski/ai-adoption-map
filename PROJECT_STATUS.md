@@ -1,4 +1,4 @@
-# AI Adoption Map (Eventbrite Supply) — Project Status
+# AI Adoption Map (Product Engineering) — Project Status
 
 **Last Updated**: 2026-05-05
 **Overall Status**: 🟢 **98% Complete** - README + manager demo include ordered team adoption path and cadence
@@ -111,7 +111,7 @@
 
 ### Repository naming (2026-05-05)
 
-- ✅ Local folder renamed to `ai-adoption-map` (was `ai-adoption-map-eventbrite-supply`); target GitHub repo name **`saski/ai-adoption-map`** for [saski repositories](https://github.com/saski?tab=repositories).
+- ✅ Local folder uses `ai-adoption-map`; target GitHub repo name **`saski/ai-adoption-map`** for [saski repositories](https://github.com/saski?tab=repositories).
 - ✅ KPI script default CSV path runs from repo root (`kpi-tracker.csv`); guides updated for `node scripts/...`.
 
 ---
@@ -142,6 +142,5 @@
 
 ## 📝 Notes
 
-- Map structure is inspired by Gorka's value stream style and adapted to Eventbrite Supply workflow.
+- Map structure is inspired by Gorka's value stream style and adapted to product engineering workflow.
 - Future updates should keep task list stable and only change statuses/notes unless process changes materially.
-
