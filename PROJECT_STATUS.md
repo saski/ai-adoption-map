@@ -3,7 +3,7 @@
 **Last Updated**: 2026-05-05
 **Overall Status**: 🟢 **98% Complete** - README + manager demo include ordered team adoption path and cadence
 
-**Repository**: [github.com/saski/ai-adoption-map](https://github.com/saski/ai-adoption-map) (create private repo on the `saski` account if it does not exist yet; local folder is `~/saski/ai-adoption-map`).
+**Repository**: [github.com/saski/ai-adoption-map](https://github.com/saski/ai-adoption-map) (create private repo on the `saski` account if it does not exist yet; local folder is `~/Code/ai-adoption-map`).
 
 ---
 

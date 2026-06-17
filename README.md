@@ -2,7 +2,7 @@
 
 This folder contains a practical AI adoption map inspired by 540's value stream map format and adapted to product engineering team workflows.
 
-**GitHub**: publish as **`saski/ai-adoption-map`** on the [saski](https://github.com/saski?tab=repositories) profile (private recommended). Clone from `~/saski/*` using:
+**GitHub**: publish as **`saski/ai-adoption-map`** on the [saski](https://github.com/saski?tab=repositories) profile (private recommended). Clone under `~/Code` using:
 
 `git clone git@github.com-saski:saski/ai-adoption-map.git`
 
